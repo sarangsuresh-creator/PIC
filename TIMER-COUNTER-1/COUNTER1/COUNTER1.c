@@ -13,9 +13,10 @@ int i = 0;
 void main(void) {
     TRISD = 0x00;
     PORTD = 0X00;
-    T1CON = 0X03;
-    while(1);
+    T1CON = 0X0B;
+    while(1){
     counter();
+    }
 }
 void counter(){
         if(TMR1L == 1){
