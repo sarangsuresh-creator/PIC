@@ -14,9 +14,10 @@ void main(void) {
     TRISD = 0x00;
     PORTD = 0X00;
     T0CON = 0XC7;
-    TMR0L = 60;
-    while(1);
+    TMR0L = 236;
+    while(1){
     timer();
+    }
 }
 void timer(){
     if(TMR0IF == 1){
@@ -26,7 +27,7 @@ void timer(){
             i = 0;
         }
         TMR0IF = 0;
-        TMR0L = 60;
+        TMR0L = 236;
         }
     }
 
