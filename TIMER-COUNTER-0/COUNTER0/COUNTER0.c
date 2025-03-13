@@ -14,8 +14,9 @@ void main(void) {
     TRISD = 0x00;
     PORTD = 0X00;
     T0CON = 0XE0;
-    while(1);
+    while(1){
     counter();
+    }
 }
 void counter(){
         if(TMR0L == 1){
