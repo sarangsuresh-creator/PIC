@@ -22,7 +22,7 @@ void main(void) {
 void timer(){
     if(TMR0IF == 1){
         i++;
-        if(i == 100){
+        if(i == 1000){
             PORTD =! PORTD;
             i = 0;
         }
