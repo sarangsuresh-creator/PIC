@@ -13,11 +13,12 @@ int i = 0;
 void main(void) {
     TRISD = 0x00;
     PORTD = 0X00;
-    T1CON = 0X79;
+    T1CON = 0X31;
     TMR1H = 0x00;
     TMR1L = 0x00;
-    while(1);
+    while(1){
     timer();
+    }
 }
 void timer(){
         if(TMR1IF == 1){
@@ -31,5 +32,4 @@ void timer(){
     }
         
  
-
 
