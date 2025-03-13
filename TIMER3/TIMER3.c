@@ -16,8 +16,9 @@ void main(void) {
     T3CON = 0X31;
     TMR3H = 0x00;
     TMR3L = 0x00;
-    while(1);
+    while(1){
     timer();
+    }
 }
 void timer(){
         if(TMR3IF == 1){
