@@ -11,7 +11,7 @@
 #define _XTAL_FREQ 20000000
 void main(){
     TRISC = 0X00;
-    T2CON = 0x7e;
+    T2CON = 0x7f;
     CCP1CON = 0x2c;
     PR2 = 255;
     while(1){
