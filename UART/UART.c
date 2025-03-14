@@ -8,6 +8,7 @@
 
 #include <xc.h>
 #define _XTAL_FREQ 20000000
+#define baud_rate  9600
 char receive();
 void string(char *s);
 void mychar(char d);
@@ -20,12 +21,11 @@ void main(){
   TRISC = 0X80;
   TXSTA = 0X24;
   RCSTA = 0X90;
-  SPBRG = 129;
+  SPBRG = (((_XTAL_FREQ/baud_rate)/16)-1);
   string("enter the number:\r");
   while(1){
       if(RCIF == 1){
           char b = receive();
-          string("\r enter the number: \r");
           if(b == '1'){
               PORTD = 0x01;
               PORTA = 0X0a;
@@ -73,5 +73,3 @@ char receive(){
 
         
  
-
-
