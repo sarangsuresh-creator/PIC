@@ -49,7 +49,7 @@ void main(){
     PORTC = 0X00;
     PORTD = 0X00;
     ADCON1 = 0X0d;
-    ADCON2 = 0x86;
+    ADCON2 = 0xA6;
     lcd_initialize();
     while(1){
         ADCON0 = 0x01;
@@ -57,8 +57,8 @@ void main(){
         while(GODONE == 1);
         result = ADRESH << 8;
         result += ADRESL;
-        val = (float)((result*5)/1023);
-        sprintf(buffer,"%f",val);
+        val = (float)((float)(result*5)/1023);
+        sprintf(buffer,"%0.3f",val);
         lcd_command(0X80);
         lcd_string(buffer);
         __delay_ms(10);
@@ -67,7 +67,7 @@ void main(){
         while(GODONE == 1);
         result = ADRESH << 8;
         result += ADRESL;
-        sprintf(buffer,"%04d",result);
+        sprintf(buffer,"%4d",result);
         lcd_command(0xc0);
         lcd_string(buffer);
         __delay_ms(10);
@@ -76,5 +76,4 @@ void main(){
 
         
  
-
 
