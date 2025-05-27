@@ -51,19 +51,18 @@ void string(char *s){
     while(*s){
         TXREG = *s++;
         while(!TXIF);
-        TXIF = 0;
+       
     }
 }
 void mychar(char d){
     TXREG = d;
     while(!TXIF);
-    TXIF = 0;
+   
 }
 char receive(){
     while(RCIF){
         char a = RCREG;
         mychar(a);
-        RCIF = 0;
         return a;
     }
 }
