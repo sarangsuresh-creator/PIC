@@ -11,7 +11,7 @@ void main(){
     while(1){
         if(RC0==1){
             i++;
-            while(RC0==1);
+           
         }
         if(i==1){
             PORTD = 0X01;
