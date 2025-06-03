@@ -13,7 +13,7 @@ int i = 0;
 void main(void) {
     TRISD = 0x00;
     PORTD = 0X00;
-    T1CON = 0X31;
+    T1CON = 0X79;
     TMR1H = 0x00;
     TMR1L = 0x00;
     while(1){
