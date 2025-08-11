@@ -27,20 +27,16 @@ char keypad[4][4]={
 char read_keypad(){
     char mychar[4]={0x0e,0x0d,0x0b,0x07};
     for(i=0;i<4;i++){
+        for(int j=0;j<4;j++){
         PORTB = mychar[i];
-        if(RB4 == 0){
-            return keypad[i][0];
-        }
-        if(RB5 == 0){
-            return keypad[i][1];
-        }
-        if(RB6 == 0){
-            return keypad[i][2];
-        }
-        if(RB7 == 0){
-            return keypad[i][3];
+        if((PORTB &(1<<(j+4)))==0){
+            while((PORTB&(1<<(j+4)))==0);
+            return keypad[j][i];
+        
+  }
         }
       }
+    return '\0';
     }
 void main(){
     TRISB = 0Xf0;
@@ -51,10 +47,12 @@ void main(){
     PORTC = 0X00;
     ADCON1 = 0X0f;
     initialize();
+    command(0X80);
     while(1){
         key = read_keypad();
-        if(key != 0){
-            command(0X80);
+        
+        if(key != '\0'){
+            
             data(key);
         }
     }
@@ -86,4 +84,3 @@ void initialize(){
 
         
  
-
